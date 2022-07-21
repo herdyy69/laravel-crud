@@ -44,6 +44,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                @guest
+                @else   
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
@@ -54,6 +56,7 @@
                             <a class="nav-link" href="{{ route('Pembelian.index') }}">PEMBELIAN</a>
                         </li>
                     </ul>
+                    @endguest
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
