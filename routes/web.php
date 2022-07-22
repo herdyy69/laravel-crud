@@ -23,8 +23,16 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/', function(){
+    return view('welcome');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
+    Route::get('/', function(){
+        return view('admin.index');
+    });
 // route siswa
 Route::resource('siswa', SiswaController::class);
 // route siswa
 Route::resource('Pembelian', PembelianController::class);
-
+});
