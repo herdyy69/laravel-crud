@@ -14,4 +14,8 @@ class Siswa extends Model
     // aktif
     public $timestamps = true;
 
+    public function wali(){
+        return $this->hasOne(Wali::class, 'id_siswa');
+    }
+
 }

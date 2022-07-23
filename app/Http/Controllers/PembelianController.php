@@ -20,7 +20,8 @@ class PembelianController extends Controller
     {
         //menampilkan semua data dari model Pembelian
         $Pembelian = Pembelian::all();
-        return view('Pembelian.index', compact('Pembelian'));
+        $activate = "Pembelian";
+        return view('Pembelian.index', compact('Pembelian','activate'));
     }
 
     /**

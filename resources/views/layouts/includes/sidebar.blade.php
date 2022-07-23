@@ -33,15 +33,21 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                <a href="{{ route('siswa.index') }}" class="nav-link {{ ($activate === "siswa")? 'active' : '' }}">
+                  <i class = "far fa-circle nav-icon"></i>
+                  <p>SISWA</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="{{ route('Pembelian.index') }}" class="nav-link {{ ($activate === "Pembelian")? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>PEMBELIAN</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('Wali.index') }}" class="nav-link {{ ($activate === "wali")? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Wali</p>
                 </a>
               </li>
               <li class="nav-item">
