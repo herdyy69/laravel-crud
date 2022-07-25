@@ -5,6 +5,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\PembelianController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WaliController;
+use App\Http\Controllers\GuruController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,15 +33,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/', function(){
         return view('admin.index');
     });
-// route siswa
-Route::resource('siswa', SiswaController::class);
-// route siswa
-Route::resource('Pembelian', PembelianController::class);
-Route::resource('wali', WaliController::class);
-
+    Route::resource('siswa', SiswaController::class);
+    Route::resource('Pembelian', PembelianController::class);
+    Route::resource('wali', WaliController::class);
+    Route::resource('guru', GuruController::class);
 });
-
-Route::resource('siswa', SiswaController::class);
-// route siswa
-Route::resource('Pembelian', PembelianController::class);
-Route::resource('wali', WaliController::class);

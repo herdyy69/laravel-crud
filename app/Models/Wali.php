@@ -13,7 +13,7 @@ class Wali extends Model
     public $timestamps = true;
 
     public function siswa(){
-        return $this->belongsTo(Siswa::class,'id/-siswa');
+        return $this->belongsTo(Siswa::class,'id_siswa');
     }
     public function image(){
         if($this->foto && file_exists(public_path('images/wali/' .$this->foto))){

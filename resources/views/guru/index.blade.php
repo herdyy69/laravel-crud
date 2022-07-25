@@ -1,14 +1,13 @@
 @extends('layouts.admin')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @include('layouts/_flash')
-                <div class="card">
+                <div class="card border-secondary">
                     <div class="card-header">
                         Data Siswa
-                        <a href="{{ route('siswa.create') }}" class="btn btn-sm btn-primary" style="float: right">
+                        <a href="{{ route('guru.create') }}" class="btn btn-sm btn-primary" style="float: right">
                             Tambah Data
                         </a>
                     </div>
@@ -20,36 +19,31 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Nomor Induk Siswa</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Agama</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Alamat</th>
-                                        <th>GURU</th>
+                                        <th>Nomor Induk Pekerja</th>
+                                        <th>Foto</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php $no = 1; @endphp
-                                    @foreach ($siswa as $data)
+                                    @foreach ($guru as $data)
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $data->nama }}</td>
-                                            <td>{{ $data->nis }}</td>
-                                            <td>{{ $data->jenis_kelamin }}</td>
-                                            <td>{{ $data->agama }}</td>
-                                            <td>{{ date('d M Y', strtotime($data->tgl_lahir)) }}</td>
-                                            <td>{{ $data->alamat }}</td>
-                                            <td>{{ $data->guru->nama }}</td>
+                                            <td>{{ $data->nip }}</td>
                                             <td>
-                                                <form action="{{ route('siswa.destroy', $data->id) }}" method="post">
+                                                <img src="{{ $data->image() }}" style="width: 100px; height:100px;"
+                                                    alt="">
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('guru.destroy', $data->id) }}" method="post">
                                                     @csrf
                                                     @method('delete')
-                                                    <a href="{{ route('siswa.edit', $data->id) }}"
+                                                    <a href="{{ route('guru.edit', $data->id) }}"
                                                         class="btn btn-sm btn-outline-success">
                                                         Edit
                                                     </a> |
-                                                    <a href="{{ route('siswa.show', $data->id) }}"
+                                                    <a href="{{ route('guru.show', $data->id) }}"
                                                         class="btn btn-sm btn-outline-warning">
                                                         Show
                                                     </a> |

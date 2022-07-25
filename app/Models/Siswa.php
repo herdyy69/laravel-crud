@@ -14,8 +14,20 @@ class Siswa extends Model
     // aktif
     public $timestamps = true;
 
-    public function wali(){
+    public function wali()
+    {
+        // data dari model 'Siswa' bisa memiliki 1 data
+        // dari model 'Wali' melalui id_siswa
         return $this->hasOne(Wali::class, 'id_siswa');
     }
+
+    // membuat relasi one to many di model
+    public function guru()
+    {
+        // data dari model 'Siswa' bisa dimiliki
+        // oleh model 'Guru' melalui 'id_siswa'
+        return $this->belongsTo(Guru::class, 'id_guru');
+    }
+
 
 }

@@ -10,13 +10,12 @@
                         Data Wali
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('wali.update', $wali->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('wali.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            @method('put')
                             <div class="mb-3">
                                 <label class="form-label">Nama Wali</label>
                                 <input type="text" class="form-control  @error('nama') is-invalid @enderror"
-                                    name="nama" value="{{ $wali->nama }}">
+                                    name="nama">
                                 @error('nama')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -25,15 +24,8 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Foto Wali</label>
-                                @if (isset($wali) && $wali->foto)
-                                    <p>
-                                        <img src="{{ asset('images/wali/' . $wali->foto) }}"
-                                            class="img-rounded img-responsive" style="width: 75px; height:75px;"
-                                            alt="">
-                                    </p>
-                                @endif
                                 <input type="file" class="form-control  @error('foto') is-invalid @enderror"
-                                    name="foto" value="{{ $wali->nama }}">
+                                    name="foto">
                                 @error('foto')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -43,12 +35,9 @@
                             <div class="mb-3">
                                 <label class="form-label">Pilih Data Siswa</label>
                                 <select name="id_siswa" class="form-control @error('id_siswa') is-invalid @enderror"
-                                    readonly>
+                                    id="">
                                     @foreach ($siswa as $data)
-                                        <option value="{{ $data->id }}"
-                                            {{ $data->id == $wali->id_siswa ? 'selected' : '' }}>
-                                            {{ $data->nama }}
-                                        </option>
+                                        <option value="{{ $data->id }}">{{ $data->nama }}</option>
                                     @endforeach
                                 </select>
                                 @error('id_siswa')
